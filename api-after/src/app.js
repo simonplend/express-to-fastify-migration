@@ -1,13 +1,18 @@
 // src/app.js
 
-import express from "express";
+import Fastify from "fastify";
+import ExpressPlugin from "fastify-express";
 
 import routes from "./routes.js";
 
-export default function buildApp() {
-  const app = express();
+export default async function buildApp() {
+  const fastify = Fastify({
+    logger: true,
+  });
 
-  app.use("/user", routes);
+  await fastify.register(ExpressPlugin);
 
-  return app;
+  fastify.use("/user", routes);
+
+  return fastify;
 }
