@@ -12,7 +12,7 @@ export default async function buildApp() {
 
   await fastify.register(ExpressPlugin);
 
-  fastify.use("/user", routes);
+  fastify.register(routes, { prefix: "/user" });
 
   return fastify;
 }

@@ -1,38 +1,27 @@
 // src/routes.js
 
-import express from "express";
 import cors from "cors";
 
-const router = express.Router();
+export default async function routes(fastify) {
+  fastify.use(cors({ origin: true }));
 
-router.use(express.json());
+  fastify.post("/", async function createUser(request, reply) {
+    const newUser = request.body;
 
-router.use(cors({ origin: true }));
+    if (!newUser) {
+      throw new Error("Error creating user");
+    }
 
-// src/routes.js
+    reply.status(201).send(newUser);
+  });
 
-router.post("/", function createUser(request, response, next) {
-  const newUser = request.body;
+  fastify.get("/:user_id", async function getUser(request, reply) {
+    const user = {
+      id: request.params.user_id,
+      first_name: "Bobinsky",
+      last_name: "Oso",
+    };
 
-  if (!newUser) {
-    return next(new Error("Error creating user"));
-  }
-
-  response.status(201).json(newUser);
-});
-
-// src/routes.js
-
-router.get("/:user_id", function getUser(request, response, next) {
-  const user = {
-    id: request.params.user_id,
-    first_name: "Bobinsky",
-    last_name: "Oso",
-  };
-
-  response.json(user);
-});
-
-// src/routes.js
-
-export default router;
+    reply.send(user);
+  });
+}
