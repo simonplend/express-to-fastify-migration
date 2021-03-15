@@ -10,10 +10,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
     "fastify": "^3.14.0",
-    "fastify-cors": "^5.2.0",
-    "fastify-express": "^0.3.2"
+    "fastify-cors": "^5.2.0"
   }
 }
