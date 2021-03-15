@@ -1,9 +1,9 @@
 // src/routes.js
 
-import cors from "cors";
+import CorsPlugin from "fastify-cors";
 
 export default async function routes(fastify) {
-  fastify.use(cors({ origin: true }));
+  fastify.register(CorsPlugin, { origin: true });
 
   fastify.post("/", async function createUser(request, reply) {
     const newUser = request.body;
