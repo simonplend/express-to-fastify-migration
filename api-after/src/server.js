@@ -2,8 +2,11 @@
 
 import buildApp from "./app.js";
 
-const express = buildApp();
+const fastify = await buildApp();
 
-express.listen(3000, () => {
-  console.log("Example app listening at http://localhost:3000");
-});
+try {
+  await fastify.listen(3000);
+} catch (error) {
+  fastify.log.error(error);
+  process.exit(1);
+}
