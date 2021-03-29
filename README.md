@@ -3,6 +3,11 @@
 > Example applications demonstrating a migration from [Express](https://expressjs.com/)
 to [Fastify](https://www.fastify.io/).
 
+## Article
+
+The code in this repository was written to accompany the article
+[How to Migrate Your API From Express to Fastify](https://www.sitepoint.com/express-to-fastify-migrate/).
+
 ## Usage
 
 Run the Express application (`api-before`):
